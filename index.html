@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>🍪 fortune cookie valentine for you</title>
+
+</head>
+<body>
+<img src="leo.jpg" alt="Our cat" class="cat-corner cat-top-left">
+<img src="lili.jpg" alt="Our cat" class="cat-corner cat-top-right">
+<img src="luna.jpg" alt="Our cat" class="cat-corner cat-bottom-left">
+<img src="Lumpi.jpg" alt="Our cat" class="cat-corner cat-bottom-right">
+    <div class="card">
+        <h1>
+            💌 for You
+            <span>💘</span>
+        </h1>
+        <div class="sub">click the cookie, love</div>
+
+
+        <div class="cookie-jar" id="cookieClicker" role="button" tabindex="0" aria-label="open your fortune cookie">
+            <div class="cookie">
+
+                <svg viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#softshadow)">
+                        <path d="M100 34C72 34 46 48 30 72C22 84 18 98 20 112C23 132 38 150 60 160C80 170 104 170 124 160C150 147 166 124 170 100C173 80 166 58 150 42C134 26 112 34 100 34Z" fill="#F7D9C4" stroke="#E8BFA0" stroke-width="2.5" />
+
+                        <path d="M88 74L74 94M118 70L138 90M67 128L82 138M138 124L118 136" stroke="#DBAF8B" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+
+                        <circle cx="145" cy="72" r="6" fill="#FFC4B0" stroke="#FFA994" stroke-width="1.5" />
+                        <text x="142" y="77" font-size="9" fill="#AA4A43" textLength="8" font-family="Arial">❤️</text>
+                    </g>
+                    <defs>
+                        <filter id="softshadow" x="-20" y="10" width="240" height="190" filterUnits="userSpaceOnUse">
+                            <feDropShadow dx="3" dy="8" stdDeviation="6" flood-color="#b3806b" flood-opacity="0.2" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <div class="message-box" id="fortuneDisplay">
+            <div class="fortune-text" id="fortuneMessage">your special message</div>
+        </div>
+
+        <div class="small-note">
+            <span>🥟</span> sweet words for you <span>🥟</span>
+        </div>
+
+        <div class="hint">
+            <span class="heart-deco">❤️</span> click the cookie, each time a new fortune <span class="heart-deco">❤️</span>
+        </div>
+
+        <footer>
+            <svg viewBox="0 0 24 24" width="22" height="22">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#D8685E" />
+            </svg>
+            <span>with all my love · valentine’s day</span>
+            <svg viewBox="0 0 24 24" width="22" height="22">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#D8685E" />
+            </svg>
+        </footer>
+    </div>
+
+
+<audio id="bgMusic" loop>
+    <source src="AKASAKIBunny GirlLyric Video.mp3" type="audio/mpeg">
+    Your browser doesn't support audio.
+</audio>
+
+
+<div style="position: fixed; bottom: 20px; left: 20px; background: rgba(255,255,255,0.8); padding: 8px 15px; border-radius: 30px; backdrop-filter: blur(5px); border: 2px solid white; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <button onclick="toggleMusic()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; gap: 8px; color: #9e4d4d;">
+        <span id="musicEmoji">🔇</span> 
+        <span id="musicText">play music</span>
+        <span style="font-size: 0.9rem;">🎵</span>
+    </button>
+</div>
+
+<script>
+    const music = document.getElementById('bgMusic');
+let musicPlaying = false;
+
+function toggleMusic() {
+    if (musicPlaying) {
+        music.pause();
+        document.getElementById('musicEmoji').textContent = '🔇';
+        document.getElementById('musicText').textContent = 'play music';
+    } else {
+        music.play().catch(e => {
+            alert('Click anywhere on the page to start music!');
+            document.body.addEventListener('click', function playOnce() {
+                music.play();
+                musicPlaying = true;
+                document.getElementById('musicEmoji').textContent = '🔊';
+                document.getElementById('musicText').textContent = 'pause music';
+                document.body.removeEventListener('click', playOnce);
+            }, { once: true });
+        });
+        if (!music.error) {
+            musicPlaying = true;
+            document.getElementById('musicEmoji').textContent = '🔊';
+            document.getElementById('musicText').textContent = 'pause music';
+        }
+    }
+    musicPlaying = !musicPlaying;
+}
+
+</script>
+
+</body>
+
+</html>
